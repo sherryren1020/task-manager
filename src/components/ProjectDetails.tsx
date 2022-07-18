@@ -30,7 +30,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
 import IconButton from "@mui/material/IconButton"
 import SideBar, { DarkModeProps } from "./SideBar"
 
-const CommentsTab = React.lazy(() => import('./CommentsTab'));
+const CommentsTab = React.lazy(() => import("./CommentsTab"))
 
 enum Status {
   finished = "finished",
@@ -238,9 +238,9 @@ const ProjectDetails: FunctionComponent<Props> = ({ toggleDark }) => {
             </Box>
             {/* For item one, should add a components to implement the leave message function */}
             <TabPanel value="1">
-             <Suspense fallback={<div>Comments Loading...</div>}>      
-              <CommentsTab />
-            </Suspense>
+              <Suspense fallback={<div>Comments Loading...</div>}>
+                <CommentsTab />
+              </Suspense>
             </TabPanel>
             <TabPanel value="2">Descriptions</TabPanel>
             <TabPanel value="3">Settings</TabPanel>

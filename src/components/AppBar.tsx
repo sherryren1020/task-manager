@@ -8,9 +8,7 @@ import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import ListIcon from "@mui/icons-material/List"
 import { Link } from "react-router-dom"
-
 import { userContext } from "../userContext"
-import { UserData } from "./SignIn"
 
 interface Props {
   name?: string
