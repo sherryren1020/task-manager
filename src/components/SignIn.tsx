@@ -1,18 +1,17 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import usersList from '../user.json'
-import { useNavigate } from 'react-router-dom';
+import * as React from "react"
+import Avatar from "@mui/material/Avatar"
+import Button from "@mui/material/Button"
+import CssBaseline from "@mui/material/CssBaseline"
+import TextField from "@mui/material/TextField"
+import Box from "@mui/material/Box"
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
+import Typography from "@mui/material/Typography"
+import Container from "@mui/material/Container"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+import usersList from "../user.json"
+import { useNavigate } from "react-router-dom"
 
-
-const theme = createTheme();
+const theme = createTheme()
 
 interface SignInProps {
   setUser: any
@@ -25,23 +24,24 @@ interface UserData {
   name: string
 }
 
-const SignIn:React.FunctionComponent<SignInProps> = (props) => {
-
-  const [users]= React.useState(usersList)
+const SignIn: React.FunctionComponent<SignInProps> = (props) => {
+  const [users] = React.useState(usersList)
   const navigate = useNavigate()
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    const data = new FormData(event.currentTarget);
+    const data = new FormData(event.currentTarget)
     let auth = false
-    for(let user of users){
+    for (let user of users) {
       console.log(user)
-      if(data.get('email') === user.email && data.get('password')=== user.password){
+      if (
+        data.get("email") === user.email &&
+        data.get("password") === user.password
+      ) {
         auth = true
-        let userInfo:UserData = user
-        props.setUser({user:userInfo})
+        let userInfo: UserData = user
+        props.setUser({ user: userInfo })
         navigate(-1)
         break
-      }else{
+      } else {
         continue
       }
     }
@@ -49,9 +49,8 @@ const SignIn:React.FunctionComponent<SignInProps> = (props) => {
     if (!auth) {
       alert("Wrong username or password!")
     }
-    event.preventDefault();
-  };
-
+    event.preventDefault()
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,18 +59,23 @@ const SignIn:React.FunctionComponent<SignInProps> = (props) => {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin="normal"
               required
@@ -104,7 +108,7 @@ const SignIn:React.FunctionComponent<SignInProps> = (props) => {
         </Box>
       </Container>
     </ThemeProvider>
-  );
+  )
 }
 
 export default SignIn
