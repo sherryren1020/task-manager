@@ -3,7 +3,7 @@ import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogTitle from "@mui/material/DialogTitle"
 import Container from "@mui/material/Container"
-import { FunctionComponent, useEffect, useState } from "react"
+import { FunctionComponent, Suspense, useState } from "react"
 import { useParams } from "react-router-dom"
 import database from "../data.json"
 import * as React from "react"
@@ -22,7 +22,6 @@ import Tab from "@mui/material/Tab"
 import TabContext from "@mui/lab/TabContext"
 import TabList from "@mui/lab/TabList"
 import TabPanel from "@mui/lab/TabPanel"
-import CommentsTab from "./CommentsTab"
 import { Link } from "react-router-dom"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import AppBar from "./AppBar"
@@ -30,6 +29,8 @@ import TextField from "@mui/material/TextField"
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
 import IconButton from "@mui/material/IconButton"
 import SideBar, { DarkModeProps } from "./SideBar"
+
+const CommentsTab = React.lazy(() => import('./CommentsTab'));
 
 enum Status {
   finished = "finished",
@@ -237,7 +238,9 @@ const ProjectDetails: FunctionComponent<Props> = ({ toggleDark }) => {
             </Box>
             {/* For item one, should add a components to implement the leave message function */}
             <TabPanel value="1">
+             <Suspense fallback={<div>Comments Loading...</div>}>      
               <CommentsTab />
+            </Suspense>
             </TabPanel>
             <TabPanel value="2">Descriptions</TabPanel>
             <TabPanel value="3">Settings</TabPanel>

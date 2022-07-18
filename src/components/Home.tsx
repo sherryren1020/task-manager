@@ -1,8 +1,10 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { FunctionComponent, Suspense } from "react"
 import AppBar from "./AppBar"
-import ProjectsList from "./ProjectList"
 import Sidebar, { DarkModeProps } from "./SideBar"
 import { Paper } from "@mui/material"
+
+const ProjectsList = React.lazy(() => import('./ProjectList'));
+
 interface IProjectsProps extends DarkModeProps {
   projects: {
     id: number
@@ -24,7 +26,9 @@ const Home: FunctionComponent<IProjectsProps> = ({
     <Paper>
       <AppBar />
       <Sidebar toggleDark={toggleDark} settoggleDark={settoggleDark} />
-      <ProjectsList projects={projects} toggleDark={toggleDark} />
+      <Suspense fallback={<div>Loading Projects</div>}>
+        <ProjectsList projects={projects} toggleDark={toggleDark} />
+      </Suspense>
     </Paper>
   )
 }
