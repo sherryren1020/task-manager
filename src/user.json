@@ -1,0 +1,29 @@
+[
+    {   "id":1,
+        "email":"ABC@test.com",
+        "password":"123",
+        "avatar":"",
+        "name":"Ann"
+
+    },
+    {  "id":2,
+        "email":"BCD@test.com",
+        "password":"123",
+        "avatar":"",
+        "name":"Jay"
+    },
+    {
+        "id":1,
+        "email":"EGF@test.com",
+        "password":"123",
+        "avatar":"",
+        "name":"Joe"
+    },
+    {
+        "id":1,
+        "email":"ABC1@test.com",
+        "password":"123",
+        "avatar":"",
+        "name":"Gunther"
+    }
+]
